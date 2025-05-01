@@ -11,6 +11,12 @@ const testAPIRouter = require('./routes/testAPI');
 
 const app = express();
 
+app.use(
+  cors({
+    origin: 'http://127.0.0.1:5500',
+  })
+);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
