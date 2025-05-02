@@ -1,0 +1,62 @@
+{
+  "laptops": {
+    "url": "laptops",
+    "title": "Laptops",
+    "image": "laptop.webp"
+  },
+  "computers": {
+    "url": "computers",
+    "title": "Computers",
+    "image": "comp.webp"
+  },
+  "monitors": {
+    "url": "monitors",
+    "title": "Monitors",
+    "image": "monitor.png"
+  },
+  "mice": {
+    "url": "mice",
+    "title": "Mice",
+    "image": "mouse.webp"
+  },
+  "keywords": {
+    "url": "keywords",
+    "title": "Keywords",
+    "image": "keyword.webp"
+  },
+  "headphones": {
+    "url": "headphones",
+    "title": "Headphones",
+    "image": "headphones.webp"
+  },
+  "game-consols": {
+    "url": "game-consols",
+    "title": "Game consols",
+    "image": "PS.webp"
+  },
+  "gamepads": {
+    "url": "gamepads",
+    "title": "Gamepads",
+    "image": "gamepads.webp"
+  },
+  "vr-headsets": {
+    "url": "vr-headsets",
+    "title": "VR Headsets",
+    "image": "VR.webp"
+  },
+  "tablets": {
+    "url": "tablets ",
+    "title": "Tablets",
+    "image": "tablet.webp"
+  },
+  "chairs": {
+    "url": "chairs ",
+    "title": "Chairs",
+    "image": "chair.webp"
+  },
+  "under-laptops": {
+    "url": "under-laptops",
+    "title": "Under laptop ",
+    "image": "underlaptop.webp"
+  }
+}

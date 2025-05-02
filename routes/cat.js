@@ -1,25 +1,41 @@
 const express = require('express');
 const router = express.Router();
+const cats = require('../data/data.json');
+const pool = require('../db/config');
 
-router.get('/', (req, res, next) => {
-  res.render('cat', {
-    title: 'All categories',
-    text: 'This is a page with all categories',
-  });
+router.get('/', async (req, res, next) => {
+  try {
+    const { rows: data } = await pool.query(`
+      SELECT *
+      FROM categories
+      LEFT JOIN categories_lang ON categories.id = categories_lang.cid
+      WHERE categories_lang.lang = 'en'
+      ORDER BY categories_lang.cid ASC
+    `);
+
+    res.render('cat', {
+      title: 'All categories',
+      text: 'You can find everything for comfortable gaming',
+      data: data,
+    });
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.get('/:item', (req, res, next) => {
+  const oneitem = req.params.item;
+  console.log(oneitem);
   res.render('item', {
-    title: req.params.item,
-    text: `Would you like to buy a new ${req.params.item}`,
+    data: cats[oneitem],
   });
 });
 
 router.get('/:item/:oneitem', (req, res, next) => {
-  console.log(req.params);
+  const oneitem = req.params.oneitem;
+
   res.render('oneitem', {
-    title: 'Beautifull choise',
-    text: 'It is the best item which we have ever had',
+    data: cats[oneitem],
   });
 });
 
