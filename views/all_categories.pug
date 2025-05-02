@@ -1,0 +1,14 @@
+extends layout
+
+block content 
+  h1= title
+  p= text
+  ul.row.mt-2
+    each item in data
+      li.col-lg-3.d-block.mt-4
+        a(href=`/categories/${item.url}`).p-3.d-flex.flex-column.justify-content-center.align-items-center.gap-5.border
+          div.category-img
+            img(src=`/images/categories/${item.image}`, alt=item.url).img-fluid
+          span= item.title
+
+          

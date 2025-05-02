@@ -1,8 +1,43 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-a {
-  color: #00B7FF;
+* {
+  box-sizing: border-box;
+}
+
+img {
+  object-fit: cover;
+  max-height: 100%;
+}
+
+a,
+.menu-link {
+  color: #000;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+.category-img {
+  width: 200px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  /* text-align: center; */
+}
+
+.cat-name {
+  margin-top: auto;
+}
+
+footer {
+  margin-top: auto;
 }

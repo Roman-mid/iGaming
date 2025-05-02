@@ -1,0 +1,11 @@
+extends layout
+
+block content 
+  div.row   
+    div.col-10
+      h1= data.title
+      p.mt-3= data.description
+    div.col-2
+      img(src=`/images/categories/${data.image}`, alt=`${data.url}`).img-fluid
+      
+
