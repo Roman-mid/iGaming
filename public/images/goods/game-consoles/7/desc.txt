@@ -1,0 +1,5 @@
+title - Ретро консоль Sony PlayStation Classic Mini Console
+
+desc - Ретро консоль Sony PlayStation Classic Mini Console – це компактна версія оригінальної PlayStation, що включає 20 класичних ігор, таких як Final Fantasy VII, Metal Gear Solid і Tekken 3. Консоль має HDMI-підключення для сучасних телевізорів, а також два контролери для мультиплеєрного досвіду. Ідеальна для фанатів ретро-ігор та колекціонерів.
+
+price - 149

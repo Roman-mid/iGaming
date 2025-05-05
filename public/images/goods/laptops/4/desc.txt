@@ -1,0 +1,7 @@
+title - Ноутбук HP Laptop 15s-eq2076ua (B22CDEA) Natural Silver / 15.6” IPS Full HD / AMD Ryzen 5 5500U / RAM 16 ГБ / SSD 512 ГБ / Windows 11 Home
+
+dest - Екран 15.6" IPS (1920x1080) Full HD, матовий / AMD Ryzen 5 5500U (2.1 - 4.0 ГГц) / RAM 16 ГБ / SSD 512 ГБ / AMD Radeon Graphics / без ОД / Wi-Fi / Bluetooth / веб-камера / Windows 11 Home / 1.69 кг / сріблястий
+
+Ноутбук HP Laptop 15s-eq2076ua (B22CDEA) Natural Silver — 15.6" матовий екран IPS Full HD (1920x1080) для чіткої картинки. Оснащений процесором AMD Ryzen 5 5500U (2.1 - 4.0 ГГц), 16 ГБ оперативної пам'яті та SSD на 512 ГБ для швидкої роботи. Вбудована графіка AMD Radeon забезпечує хорошу продуктивність у різних задачах. Працює на Windows 11 Home, має Wi-Fi, Bluetooth і веб-камеру. Легкий та стильний, вага 1.69 кг, сріблястий колір.
+
+price - 499

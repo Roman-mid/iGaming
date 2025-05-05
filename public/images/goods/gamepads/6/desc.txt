@@ -1,0 +1,5 @@
+title - Дротове кермо Hori Force Feedback Truck Control System for PC Black
+
+desc - Дротове кермо Hori Force Feedback Truck Control System для ПК — професійна система керування для симуляторів вантажівок, з реалістичним кермом, подвійним мотором зворотного зв'язку, педалями з металевими сенсорами та можливістю перемикання передач. Сумісне з Windows 10/11.
+
+price - 499

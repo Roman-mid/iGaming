@@ -1,0 +1,7 @@
+title - Монітор 34" MSI Modern MD342CQPW
+
+desc -  UWQHD / VA 1500R / 120Hz / FreeSync Premium / 8bits + FRC / HDR Ready / USB Type-C 98W Power Delivery / HAS / PiP / PbP / Speakers 3W
+
+Монітор MSI Modern MD342CQPW 34" UWQHD з VA-матрицею, вигнутим радіусом 1500R, роздільною здатністю 3440x1440, частотою оновлення 120 Гц і підтримкою FreeSync Premium для плавного ігрового досвіду. Вбудовані функції HDR Ready та 8-біт + FRC для яскравих кольорів. Має USB Type-C 98W Power Delivery для зручного підключення і зарядки пристроїв. Підтримує PiP (картинка в картинці) та PbP (картинка поруч), а також має вбудовані динаміки потужністю 3W. Регулювання висоти, що дозволяє налаштувати комфортний кут огляду.
+
+price - 499

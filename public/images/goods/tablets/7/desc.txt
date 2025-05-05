@@ -1,0 +1,7 @@
+title - Планшет Samsung Galaxy Tab S10 Ultra 5G 12/512GB Moonstone Gray
+
+desc - Екран 14.6" Dynamic AMOLED 2X (2960x1848) / Mediatek Dimensity 9300+ (1 x 3.4 ГГц + 3 x 2.8 ГГц + 4 x 2.0 ГГц) / RAM 12 ГБ / 512 ГБ вбудованої пам'яті + microSD / 4G / 5G / Wi-Fi / Bluetooth 5.3 / основна подвійна камера 13 Мп + 8 Мп, фронтальна подвійна камера 12 Мп + 12 Мп / GPS / підтримка 2-х СІМ-карт / пиловологозахищений / Android 14 / 723 г / сірий
+
+Планшет Samsung Galaxy Tab S10 Ultra 5G має 14.6" Dynamic AMOLED 2X екран (2960x1848) та процесор Mediatek Dimensity 9300+ (1 x 3.4 ГГц + 3 x 2.8 ГГц + 4 x 2.0 ГГц). Оснащений 12 ГБ RAM та 512 ГБ вбудованої пам'яті, з підтримкою microSD. Має основну подвійну камеру 13 Мп + 8 Мп і фронтальну 12 Мп + 12 Мп. Підтримує 4G, 5G, Wi-Fi, Bluetooth 5.3, GPS, 2 СІМ-карти. Пиловологозахищений. Працює на Android 14. Вага — 723 г. Колір — Moonstone Gray.
+
+price - 1499

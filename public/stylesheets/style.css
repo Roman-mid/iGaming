@@ -31,11 +31,18 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: end;
-  /* text-align: center; */
 }
 
 .cat-name {
   margin-top: auto;
+}
+
+.good-text {
+  height: 50px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Количество строк */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 footer {

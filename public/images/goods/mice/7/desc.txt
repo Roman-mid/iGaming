@@ -1,0 +1,5 @@
+title - Миша GamePro GM300BL USB Blue-White
+
+desc - ​Миша GamePro GM300BL USB Blue-White — ігрова миша з оптичним сенсором 7200 DPI, 8 програмованими кнопками, RGB-підсвіткою та дротовим підключенням через USB
+
+price - 29

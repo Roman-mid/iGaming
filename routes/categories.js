@@ -24,7 +24,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.get('/:goods', async (req, res, next) => {
-  const goods = req.params.goods;
+  const single_category = req.params.goods;
 
   try {
     const { rows: data } = await pool.query(
@@ -34,11 +34,20 @@ router.get('/:goods', async (req, res, next) => {
       LEFT JOIN categories_lang ON categories.id = categories_lang.cid
       WHERE categories_lang.lang = 'en' AND categories.url = $1
       ORDER BY categories_lang.cid ASC`,
-      [goods]
+      [single_category]
+    );
+
+    const { rows: goods } = await pool.query(
+      `
+      SELECT * FROM goods
+      LEFT JOIN goods_lang ON goods.id = goods_lang.gid
+      WHERE goods.cid = $1 AND goods_lang.lang = 'en'`,
+      [data[0].cid]
     );
 
     res.render('single_category', {
       data: data[0],
+      goods: goods,
     });
   } catch (error) {
     next(error);

@@ -7,5 +7,15 @@ block content
       p.mt-3= data.description
     div.col-2
       img(src=`/images/categories/${data.image}`, alt=`${data.url}`).img-fluid
-      
+
+  ul.row
+    each good in goods 
+      li.col-lg-3.d-block.mt-4.text-center(title=`${good.title}`)
+        a(href=`/categories/${data.url}/${good.url}`).p-3.d-flex.flex-column.justify-content-center.align-items-center.gap-5.border
+          div.category-img
+            img(src=`/images/${good.image}`, alt=`${good.url}`).img-fluid
+          span
+            b #{good.price} £
+          p.good-text= good.title
+
 

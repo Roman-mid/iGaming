@@ -1,0 +1,5 @@
+title - Бездротовий геймпад Microsoft Xbox Wireless Controller Robot White 
+
+desc - ручний і стильний контролер з гібридною хрестовиною, текстурованими кнопками та підтримкою Bluetooth для Xbox Series X|S, ПК, Android та iOS.
+
+price - 59

@@ -1,0 +1,7 @@
+title - Монітор 27" MSI MPG 274URF QD
+
+desc - Quantum Dot 4K UHD / Rapid IPS / 160Hz / 0.5ms(GtG / 8-Bit + FRC / DCI-P3 98% / AMD FreeSync Premium / G-SYNC Compatible / KVM / Type-C PD 65W
+
+Монітор MSI MPG 274URF 27" з Quantum Dot 4K UHD та Rapid IPS для яскравих кольорів і високої контрастності. Частота оновлення 160 Гц і час відгуку 0.5 мс (GtG) забезпечують плавне відображення руху. Підтримка DCI-P3 98% гарантує точну передачу кольорів. Вбудовані технології AMD FreeSync Premium і G-SYNC для зменшення розривів і артефактів. Підключення через Type-C з підтримкою PD 65W і функція KVM для керування кількома пристроями з одного монітора.
+
+price - 499

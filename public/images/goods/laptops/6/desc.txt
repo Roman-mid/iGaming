@@ -1,0 +1,7 @@
+title - Ноутбук ASUS ROG Zephyrus G16 (2025) GU605CX-QR122X (90NR0M65-M00670) Eclipse Gray + фірмовий чохол та миша / 16" OLED WQXGA 240 Гц / Intel Core Ultra 9 285H / RAM 64 ГБ / SSD 2 ТБ / nVidia GeForce RTX 5090, 24 ГБ
+
+dest - Екран 16" OLED (2560x1600) WQXGA 240 Гц, глянцевий / Intel Core Ultra 9 285H (1.0 - 5.4 ГГц) / RAM 64 ГБ / SSD 2 ТБ / nVidia GeForce RTX 5090, 24 ГБ / без ОД / Wi-Fi / Bluetooth / веб-камера / Windows 11 Pro / 1.95 кг / сірий / чохол + миша
+
+Ноутбук ASUS ROG Zephyrus G16 (2025) має 16" OLED екран WQXGA (2560x1600) з частотою оновлення 240 Гц для яскравих та чітких зображень. Оснащений потужним процесором Intel Core Ultra 9 285H (1.0 - 5.4 ГГц), 64 ГБ оперативної пам'яті та 2 ТБ SSD для швидкої роботи з великими обсягами даних. Відеокарта nVidia GeForce RTX 5090 з 24 ГБ пам'яті забезпечує відмінну графіку. Має Windows 11 Pro, Wi-Fi, Bluetooth, веб-камеру та важить 1.95 кг. У комплекті — фірмовий чохол і миша. Колір — Eclipse Gray.
+
+price - 3499

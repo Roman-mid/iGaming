@@ -1,0 +1,6 @@
+title - Миша Razer Naga V2 Pro Wireless 
+
+desc - Бездротова миша Razer Naga V2 Pro — універсальне рішення для геймерів з 3 змінними панелями (2, 6 і 12 кнопок), сенсором 30K DPI, коліщатком HyperScroll Pro та підтримкою трьох режимів підключення: HyperSpeed, Bluetooth і USB-C
+
+
+price - 249
