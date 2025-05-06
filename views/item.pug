@@ -1,0 +1,30 @@
+extends layout
+
+block content 
+  a.btn.btn-outline-secondary(href=`/categories/${goods.url}`) ← Back to #{goods.url}
+  div.row.mt-5
+    div.col-12.mb-5
+      h1= item.title
+    div.col-4
+      img(src=`/images/${item.image}`, alt=`${item.url}`).img-fluid
+    div.col-8
+      p= item.description
+      b Price: #{item.price} £
+
+    ul
+      each img in images
+        li
+          img(src=`/images/${img.url}`, alt="")
+
+  ul.row.mt-5
+    h4 You may also be interested in
+    each simGood in similarGoods 
+      li.col-lg-3.d-block.text-center(title=`${simGood.title}`)
+        a(href=`/categories/${goods.url}/${simGood.url}`).p-3.d-flex.flex-column.justify-content-center.align-items-center.gap-5.border
+          div.category-img
+            img(src=`/images/${simGood.image}`, alt=`${simGood.url}`).img-fluid
+          span
+            //- b #{simGood.price} £
+          p.good-text= simGood.title
+
+    
