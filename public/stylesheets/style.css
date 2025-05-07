@@ -7,6 +7,17 @@ body {
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 img {
@@ -30,7 +41,24 @@ a:hover {
   height: 150px;
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: center;
+}
+
+.galary-wrap {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.galery-img {
+  /* width: 100%; */
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
 }
 
 .cat-name {
@@ -40,11 +68,37 @@ a:hover {
 .good-text {
   height: 50px;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Количество строк */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 footer {
   margin-top: auto;
+}
+
+/* styles  */
+
+.galary-h,
+.max-h-400 {
+  height: 400px;
+  /* max-height: 400px; */
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 992px) {
+  .galery-img {
+    height: 100%;
+    width: 20%;
+    padding: 5px;
+  }
+
+  .galary-h {
+    height: 150px;
+  }
 }

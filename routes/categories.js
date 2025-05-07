@@ -90,7 +90,7 @@ router.get('/:goods/:item', async (req, res, next) => {
     const { rows: images } = await pool.query(
       `
       SELECT * FROM images
-      WHERE gid = $1 
+      WHERE gid = $1 AND ord != 1
       ORDER BY ord ASC`,
       [item[0].gid]
     );

@@ -5,26 +5,37 @@ block content
   div.row.mt-5
     div.col-12.mb-5
       h1= item.title
-    div.col-4
-      img(src=`/images/${item.image}`, alt=`${item.url}`).img-fluid
-    div.col-8
-      p= item.description
+
+    div.col-lg-6.col-md-12
+      div.row.p-2.border
+        div.col-lg-10.col-md-12.text-center.max-h-400.flex-center.goods-mean-image-wrap
+          img(src=`/images/${item.image}`, alt=`${item.url}`).img-fluid.goods-mean-image
+
+        div.col-lg-2.col-md-12.mt-lg-0.mt-md-5
+          ul.row.galary-h.galary-wrap
+            li.col-lg-12.col-md-3.border.galery-img
+              img(src=`/images/${item.image}`, alt=`${item.url}`).img-fluid
+            each img in images
+              li.col-lg-12.col-md-3.text-center.galery-img
+                img.img-fluid(src=`/images/${img.url}`, alt=`${item.url}` )
+
+    div.col-lg-6.col-md-12.fs-5.mt-lg-0.mt-md-5
+      p.mb-4= item.description
       b Price: #{item.price} £
 
-    ul
-      each img in images
-        li
-          img(src=`/images/${img.url}`, alt="")
+
 
   ul.row.mt-5
     h4 You may also be interested in
     each simGood in similarGoods 
-      li.col-lg-3.d-block.text-center(title=`${simGood.title}`)
-        a(href=`/categories/${goods.url}/${simGood.url}`).p-3.d-flex.flex-column.justify-content-center.align-items-center.gap-5.border
+      li.col-lg-3.col-md-6.d-block.text-center(title=`${simGood.title}`)
+        a(href=`/categories/${goods.url}/${simGood.url}`).p-3.flex-center.flex-column.gap-2.border
           div.category-img
             img(src=`/images/${simGood.image}`, alt=`${simGood.url}`).img-fluid
           span
-            //- b #{simGood.price} £
           p.good-text= simGood.title
+
+block scripts
+  script(src="/javascripts/galary-item.js") 
 
     
