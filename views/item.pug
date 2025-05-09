@@ -7,7 +7,7 @@ block content
       h1= item.title
 
     div.col-lg-6.col-md-12
-      div.row.p-2.border
+      div.row.p-2
         div.col-lg-10.col-md-12.text-center.max-h-400.flex-center.goods-mean-image-wrap
           img(src=`/images/${item.image}`, alt=`${item.url}`).img-fluid.goods-mean-image
 
@@ -22,20 +22,22 @@ block content
     div.col-lg-6.col-md-12.fs-5.mt-lg-0.mt-md-5
       p.mb-4= item.description
       b Price: #{item.price} £
+      button.d-block.mt-4.btn.btn-success.button-add-to-cart(data-id=`${item.gid}`) Add to cart
 
 
 
-  ul.row.mt-5
+  ul.row.mt-5.row-gap-md-4.gap-lg-0
     h4 You may also be interested in
     each simGood in similarGoods 
       li.col-lg-3.col-md-6.d-block.text-center(title=`${simGood.title}`)
-        a(href=`/categories/${goods.url}/${simGood.url}`).p-3.flex-center.flex-column.gap-2.border
+        a(href=`/categories/${goods.url}/${simGood.url}`).p-3.flex-center.flex-column.gap-2.border.itemwrap
           div.category-img
-            img(src=`/images/${simGood.image}`, alt=`${simGood.url}`).img-fluid
+            img(src=`/images/${simGood.image}`, alt=`${simGood.url}`).img-fluid.transition
           span
           p.good-text= simGood.title
 
 block scripts
   script(src="/javascripts/galary-item.js") 
+  script(src="/javascripts/cart.js") 
 
     

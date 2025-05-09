@@ -3,18 +3,16 @@ extends layout
 block content 
   a.btn.btn-outline-secondary(href='/categories') ← Back to all categories
   div.row.mt-5
-    div.col-10
+    div.col-lg-10
       h1= data.title
       p.mt-3= data.description
-    div.col-2
-      img(src=`/images/categories/${data.image}`, alt=`${data.url}`).img-fluid
 
   ul.row
     each good in goods 
-      li.col-lg-3.d-block.mt-4.text-center(title=`${good.title}`)
-        a(href=`/categories/${data.url}/${good.url}`).p-3.d-flex.flex-column.justify-content-center.align-items-center.gap-5.border
+      li.col-lg-3.col-md-6.d-block.mt-4.text-center(title=`${good.title}`)
+        a(href=`/categories/${data.url}/${good.url}`).p-3.flex-center.flex-column.gap-3.border.itemwrap
           div.category-img
-            img(src=`/images/${good.image}`, alt=`${good.url}`).img-fluid
+            img(src=`/images/${good.image}`, alt=`${good.url}`).img-fluid.transition
           span
             b #{good.price} £
           p.good-text= good.title

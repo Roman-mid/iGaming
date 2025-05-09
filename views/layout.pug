@@ -4,10 +4,13 @@ html
     title= title
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
+    
+    link(rel="icon" type="image/x-icon" href="/images/favicon2.png")
+
   body
     nav.navbar.navbar-expand-lg.bg-body-tertiary.mb-5.px-5
       .container-fluid
-        a.navbar-brand(href='/') Tech-SHOP
+        a.navbar-brand(href='/') iGaming
         button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
           span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
@@ -19,10 +22,16 @@ html
             li.nav-item
               a.nav-link.active.menu-link(href='/categories') Categories
   
-    .container
+    div.container.pb-5
+
+      div.row
+        div.col-lg-6
+        div.col-lg-6
+          div#main-cart
+
       block content
 
-  footer.py-3.mt-auto
+  footer.pt-5.pb-3.mt-auto
     ul.nav.justify-content-center.border-bottom.pb-3.mb-3
       li.nav-item
         a.nav-link.px-2.text-body-secondary(href='/') Home
@@ -37,4 +46,5 @@ html
     p.text-center.text-body-secondary &copy; 2025 Company, Inc
 
   script(src="/javascripts/bootstrap.min.js") 
+  script(src="/javascripts/order.js") 
   block scripts

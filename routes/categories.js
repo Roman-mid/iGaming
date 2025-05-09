@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../db/config');
 
+// get all categories
 router.get('/', async (req, res, next) => {
   try {
     const { rows: data } = await pool.query(`
@@ -22,6 +23,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+// get one category
 router.get('/:goods', async (req, res, next) => {
   const single_category = req.params.goods;
 
@@ -82,11 +84,13 @@ router.get('/:goods/:item', async (req, res, next) => {
       `
       SELECT * FROM goods
       LEFT JOIN goods_lang ON goods.id = goods_lang.gid
-      WHERE goods.cid = ${goods[0].cid} AND goods.id != ${item[0].gid} AND goods_lang.lang = 'en' 
+      WHERE goods.cid = $1 AND goods.id != $2 AND goods_lang.lang = 'en' 
       ORDER BY random()
-      LIMIT 4`
+      LIMIT 4`,
+      [goods[0].cid, item[0].gid]
     );
 
+    // galery for one item
     const { rows: images } = await pool.query(
       `
       SELECT * FROM images
