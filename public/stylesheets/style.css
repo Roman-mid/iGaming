@@ -40,6 +40,21 @@ a,
   opacity: 0.7;
 }
 
+.number-of-items {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgb(222, 175, 86);
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  top: -5px;
+  right: -12px;
+}
+
 .category-img {
   width: 200px;
   height: 150px;

@@ -21,13 +21,20 @@ html
               a.nav-link.active.menu-link(aria-current='page' href='#') FAQs
             li.nav-item
               a.nav-link.active.menu-link(href='/categories') Categories
+            li.nav-item
+              a.nav-link.active.menu-link(href='/login') Login
+            li.nav-item
+              a.nav-link.active.menu-link.position-relative.cart-link(href='/cart') Cart
+                spand.number-of-items.flex-center.d-none
+
+                
   
     div.container.pb-5
 
-      div.row
-        div.col-lg-6
-        div.col-lg-6
-          div#main-cart
+      //- div.row
+      //-   div.col-lg-6
+      //-   div.col-lg-6
+      //-     div#main-cart
 
       block content
 
@@ -46,5 +53,6 @@ html
     p.text-center.text-body-secondary &copy; 2025 Company, Inc
 
   script(src="/javascripts/bootstrap.min.js") 
-  script(src="/javascripts/order.js") 
+  script(src="/javascripts/addToCart.js") 
+
   block scripts

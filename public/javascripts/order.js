@@ -1,18 +1,23 @@
 const mainCart = document.querySelector('#main-cart');
+const minusBtns = document.querySelectorAll('.cart-minus');
 
 let cart, goodsObject;
 
 const getOrder = async () => {
-  const response = await fetch('/cart/get-cart');
-  const result = await response.json();
+  try {
+    const response = await fetch('/cart/get-cart');
+    const result = await response.json();
+    console.log('get-cart');
+    cart = result.cart;
+    goodsObject = result.goodsInCart.reduce((accum, item) => {
+      accum[item.gid] = item;
+      return accum;
+    }, {});
 
-  cart = result.cart;
-  goodsObject = result.goodsInCart.reduce((accum, item) => {
-    accum[item.gid] = item;
-    return accum;
-  }, {});
-
-  showCart();
+    showCart();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // update cart after adding/removeing item
@@ -22,7 +27,6 @@ const updateCart = async () => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(cart),
   });
-  console.log(1);
 };
 
 // minus item
@@ -48,17 +52,20 @@ const showCart = () => {
   updateCart();
 
   if (Object.keys(cart).length === 0) {
-    mainCart.innerHTML = '';
+    mainCart.innerHTML = "<h1>You don't have any items</h1>";
+    itemsInCart.textContent = '';
+    itemsInCart.classList.add('d-none');
     return;
   }
 
   let table = '';
+  let total = 0;
+  let countItemsInCart = 0;
 
   table += '<table class="table">';
   table +=
     '<tr><th></th><th>Image</th><th>Title</th><th>Count</th><th>Price</th></tr>';
 
-  let total = 0;
   for (let id in cart) {
     const cartId = cart[id];
     const itemId = goodsObject[id];
@@ -91,11 +98,15 @@ const showCart = () => {
         </td>`;
     table += `<td>${cart[id] * itemId.price} £</td>`;
     table += '</tr>';
+
+    countItemsInCart += cart[id]; //count all items in cart
   }
   table += `<tr><td colspan="4">Total:</td><td><b>${total} £</b></td></tr>`;
   table += '</table>';
 
-  mainCart.innerHTML = table;
+  mainCart.innerHTML = table; // show cart table
+
+  itemsInCart.textContent = countItemsInCart; // show quantity in cart btn
 };
 
 mainCart.addEventListener('click', (e) => {
