@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
       SELECT *
       FROM categories
       LEFT JOIN categories_lang ON categories.id = categories_lang.cid
-      WHERE categories_lang.lang = 'en'
+      WHERE categories_lang.lang = '${lang}'
       ORDER BY categories_lang.cid ASC
     `);
 
@@ -33,7 +33,7 @@ router.get('/:goods', async (req, res, next) => {
       SELECT *
       FROM categories
       LEFT JOIN categories_lang ON categories.id = categories_lang.cid
-      WHERE categories_lang.lang = 'en' AND categories.url = $1
+      WHERE categories_lang.lang = '${lang}' AND categories.url = $1
       ORDER BY categories_lang.cid ASC`,
       [single_category]
     );
@@ -42,7 +42,7 @@ router.get('/:goods', async (req, res, next) => {
       `
       SELECT * FROM goods
       LEFT JOIN goods_lang ON goods.id = goods_lang.gid
-      WHERE goods.cid = $1 AND goods_lang.lang = 'en'`,
+      WHERE goods.cid = $1 AND goods_lang.lang = '${lang}'`,
       [data[0].cid]
     );
 
@@ -65,7 +65,7 @@ router.get('/:goods/:item', async (req, res, next) => {
       SELECT *
       FROM categories
       LEFT JOIN categories_lang ON categories.id = categories_lang.cid
-      WHERE categories_lang.lang = 'en' AND categories.url = $1
+      WHERE categories_lang.lang = '${lang}' AND categories.url = $1
       ORDER BY categories_lang.cid ASC`,
       [single_category]
     );
@@ -75,7 +75,7 @@ router.get('/:goods/:item', async (req, res, next) => {
       `
       SELECT * FROM goods
       LEFT JOIN goods_lang ON goods.id = goods_lang.gid
-      WHERE goods.url = $1 AND goods_lang.lang = 'en'`,
+      WHERE goods.url = $1 AND goods_lang.lang = '${lang}'`,
       [oneItem]
     );
 
@@ -84,7 +84,7 @@ router.get('/:goods/:item', async (req, res, next) => {
       `
       SELECT * FROM goods
       LEFT JOIN goods_lang ON goods.id = goods_lang.gid
-      WHERE goods.cid = $1 AND goods.id != $2 AND goods_lang.lang = 'en' 
+      WHERE goods.cid = $1 AND goods.id != $2 AND goods_lang.lang = '${lang}' 
       ORDER BY random()
       LIMIT 4`,
       [goods[0].cid, item[0].gid]

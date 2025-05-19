@@ -40,14 +40,23 @@ a,
   opacity: 0.7;
 }
 
+.lang {
+  overflow: hidden;
+}
+
+.dropdown-item:active,
+.dropdown-item.active:active {
+  background: #666;
+}
+.dropdown-item.active {
+  background: #999;
+}
+
 .number-of-items {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background: rgb(222, 175, 86);
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   color: #fff;
   font-size: 12px;
   position: absolute;

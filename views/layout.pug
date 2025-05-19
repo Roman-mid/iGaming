@@ -15,6 +15,14 @@ html
           span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
           ul.navbar-nav.ms-auto.mb-2.mb-lg-0
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+                | Lang #{lang === 'en' ? 'En' : 'Sp'}
+              ul.dropdown-menu.lang
+                li
+                  button.dropdown-item(class={ active: lang === 'en' })(data-lang='en') En
+                li
+                  button.dropdown-item(class={ active: lang === 'spain' })(data-lang='spain') Spain
             li.nav-item
               a.nav-link.active.menu-link(aria-current='page' href='/') Home
             li.nav-item
@@ -27,8 +35,9 @@ html
               a.nav-link.active.menu-link.position-relative.cart-link(href='/cart') Cart
                 spand.number-of-items.flex-center.d-none
 
-                
-  
+
+
+
     div.container.pb-5
 
       //- div.row
@@ -52,7 +61,9 @@ html
         a.nav-link.px-2.text-body-secondary(href='#') About
     p.text-center.text-body-secondary &copy; 2025 Company, Inc
 
-  script(src="/javascripts/bootstrap.min.js") 
+  //- script(src="/javascripts/bootstrap.min.js") 
+  script(src="/javascripts/bootstrap.bundle.min.js") 
   script(src="/javascripts/addToCart.js") 
+  script(src="/javascripts/chageLanguage.js") 
 
   block scripts

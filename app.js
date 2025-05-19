@@ -11,7 +11,10 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const catRouter = require('./routes/categories');
 const cartRouter = require('./routes/cart');
+const changelangRouter = require('./routes/change_lang');
 // const testAPIRouter = require('./routes/testAPI');
+
+global.lang = 'en';
 
 const app = express();
 
@@ -47,6 +50,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/categories', catRouter);
 app.use('/cart', cartRouter);
+app.use('/change_lang', changelangRouter);
 // app.use('/test', testAPIRouter);
 
 // catch 404 and forward to error handler

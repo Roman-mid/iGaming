@@ -64,13 +64,11 @@ router.get('/get-cart', async (req, res) => {
       return;
     }
 
-    console.log({ idItemsInCart });
-
     const { rows: goodsInCart } = await pool.query(
       `
       SELECT * FROM goods
       LEFT JOIN goods_lang ON goods.id = goods_lang.gid
-      WHERE goods.id IN (${idItemsInCart}) AND goods_lang.lang = 'en'
+      WHERE goods.id IN (${idItemsInCart}) AND goods_lang.lang = '${lang}'
       `
     );
 
@@ -133,78 +131,5 @@ router.post('/update-cart', async (req, res) => {
 
   res.json({ result: true });
 });
-
-// plus item in cart
-// router.post('/plus-item', async (req, res, next) => {
-//   const uid = req.session.uid;
-//   const id = req.body.id;
-
-//   const { rows: orders } = await pool.query(
-//     `
-//     SELECT * FROM orders WHERE uid = $1 AND status = 1 LIMIT 1
-//     `,
-//     [uid]
-//   );
-
-//   const cart = JSON.parse(orders[0].cart);
-//   cart[id]++;
-
-//   await pool.query(
-//     `
-//       UPDATE orders SET cart = $1 WHERE id = $2
-//       `,
-//     [cart, orders[0].id]
-//   );
-
-//   res.json({ result: true });
-// });
-
-// router.post('/minus-item', async (req, res, next) => {
-//   const uid = req.session.uid;
-//   const id = req.body.id;
-
-//   const { rows: orders } = await pool.query(
-//     `
-//     SELECT * FROM orders WHERE uid = $1 AND status = 1 LIMIT 1
-//     `,
-//     [uid]
-//   );
-
-//   const cart = JSON.parse(orders[0].cart);
-//   cart[id]--;
-
-//   await pool.query(
-//     `
-//       UPDATE orders SET cart = $1 WHERE id = $2
-//       `,
-//     [cart, orders[0].id]
-//   );
-
-//   res.json({ result: true });
-// });
-
-// router.post('/remove-item', async (req, res, next) => {
-//   const uid = req.session.uid;
-//   const id = req.body.id;
-
-//   const { rows: orders } = await pool.query(
-//     `
-//     SELECT * FROM orders WHERE uid = $1 AND status = 1 LIMIT 1
-//     `,
-//     [uid]
-//   );
-
-//   const cart = JSON.parse(orders[0].cart);
-//   delete cart[id];
-
-//   await pool.query(
-//     `
-//       UPDATE orders SET cart = $1 WHERE id = $2
-//     `,
-//     [cart, orders[0].id]
-//   );
-
-//   res.json({ result: true });
-// });
 
 module.exports = router;
