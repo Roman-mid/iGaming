@@ -2,25 +2,19 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../db/config');
 
-const auth = require('./middlewares/auth');
-
 router.get('/', (req, res, next) => {
-  if (!req.session.user?.id) {
-    res.redirect('/login');
-    return;
-  }
   res.render('cart', {});
 });
 
 // get number of items for headr
-router.get('/get-quantity-items', auth, async (req, res) => {
-  const userID = req.session.user.id;
+router.get('/get-quantity-items', async (req, res) => {
+  const uid = req.session.uid;
 
   const { rows: orders } = await pool.query(
     `
-    SELECT * FROM orders WHERE user_id = $1 AND status = 1 LIMIT 1
+    SELECT * FROM orders WHERE uid = $1 AND status = 1 LIMIT 1
       `,
-    [userID]
+    [uid]
   );
 
   if (orders.length === 0) {
@@ -43,14 +37,14 @@ router.get('/get-quantity-items', auth, async (req, res) => {
 });
 
 // get items from cart - USING JS AND showCart()
-router.get('/get-cart', auth, async (req, res) => {
-  const userID = req.session.user.id;
+router.get('/get-cart', async (req, res) => {
+  const uid = req.session.uid;
 
   const { rows: orders } = await pool.query(
     `
-    SELECT * FROM orders WHERE user_id = $1 AND status = 1 LIMIT 1
+    SELECT * FROM orders WHERE uid = $1 AND status = 1 LIMIT 1
       `,
-    [userID]
+    [uid]
   );
 
   if (orders.length === 0) {
@@ -86,15 +80,15 @@ router.get('/get-cart', auth, async (req, res) => {
 });
 
 // add item to cart
-router.post('/add-to-cart', auth, async (req, res, next) => {
+router.post('/add-to-cart', async (req, res, next) => {
+  const uid = req.session.uid;
   const id = req.body.id;
-  const userID = req.session.user.id;
 
   const { rows: orders } = await pool.query(
     `
-    SELECT * FROM orders WHERE user_id = $1 AND status = 1 LIMIT 1
+    SELECT * FROM orders WHERE uid = $1 AND status = 1 LIMIT 1
     `,
-    [userID]
+    [uid]
   );
 
   const cart = {};
@@ -104,9 +98,9 @@ router.post('/add-to-cart', auth, async (req, res, next) => {
 
     await pool.query(
       `
-    INSERT INTO orders (user_id, cart) VALUES ($1, $2)
+    INSERT INTO orders (uid, cart) VALUES ($1, $2)
     `,
-      [userID, cart]
+      [uid, cart]
     );
   } else {
     const cart = JSON.parse(orders[0].cart);
@@ -129,52 +123,13 @@ router.post('/add-to-cart', auth, async (req, res, next) => {
 });
 
 // update cart
-router.post('/update-cart', auth, async (req, res) => {
+router.post('/update-cart', async (req, res) => {
+  const uid = req.session.uid;
   const cart = req.body;
-  const userID = req.session.user.id;
 
-  await pool.query('UPDATE orders SET cart = $1 WHERE user_id = $2', [
-    cart,
-    userID,
-  ]);
+  await pool.query('UPDATE orders SET cart = $1 WHERE uid = $2', [cart, uid]);
 
   res.json({ result: true });
-});
-
-router.post('/buy-now', auth, async (req, res, next) => {
-  try {
-    const userID = req.session.user.id;
-
-    const { rows: cart } = await pool.query(
-      `
-    SELECT cart, orders_history FROM orders WHERE user_id = $1
-    `,
-      [userID]
-    );
-
-    if (cart.length === 0 || !cart[0].cart) {
-      return res.status(400).json({ result: false, message: 'Cart is empty' });
-    }
-
-    await pool.query(
-      `
-    INSERT INTO orders_history (user_id, orders) VALUES ($1, $2)
-    `,
-      [userID, cart[0].cart]
-    );
-
-    await pool.query(
-      `
-    UPDATE orders SET cart = '{}' WHERE user_id = $1
-    `,
-      [userID]
-    );
-
-    // res.json({ result: true });
-    res.redirect('/categories');
-  } catch (err) {
-    res.status(500).json({ result: false, message: 'Server error' });
-  }
 });
 
 module.exports = router;

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Create a new account
+  form.signUpForm(method="POST", action="/sign-up")
+    .form-group
+      label(for='exampleInputEmail1') Email address
+      input#exampleInputEmail1.form-control.mt-1(name='email' type='email' aria-describedby='emailHelp' placeholder='Enter email')
+
+    .form-group.mt-3
+      label(for='exampleInputPassword1') Password
+      input#exampleInputPassword1.form-control.mt-1(name='password' type='password' placeholder='Password')
+    button.btn.btn-success.mt-3.signupBtn(type='submit') Sign Up
+
+  a.mt-3.d-block.text-success(href="/login") Back to Login
+
+  script(src="/javascripts/sign_up.js") 
+  block scripts

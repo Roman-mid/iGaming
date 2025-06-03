@@ -22,7 +22,10 @@ block content
     div.col-lg-6.col-md-12.fs-5.mt-lg-0.mt-md-5
       p.mb-4= item.description
       b Price: #{item.price} £
-      button.d-block.mt-4.btn.btn-success.button-add-to-cart(data-id=`${item.gid}`) Add to cart
+      if user 
+        button.d-block.mt-4.btn.btn-success.button-add-to-cart(data-id=`${item.gid}`) Add to cart
+      else 
+        p.mt-5.text-success Login to add item to cart
 
 
 

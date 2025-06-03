@@ -3,7 +3,10 @@ const itemsInCart = document.querySelector('.number-of-items');
 const addToCart = async function (id) {
   await fetch('/cart/add-to-cart', {
     method: 'POST',
-    headers: { 'content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
     body: JSON.stringify({ id }),
   });
 
@@ -11,7 +14,9 @@ const addToCart = async function (id) {
 };
 
 const getQuantityItems = async () => {
-  const response = await fetch('/cart/get-quantity-items');
+  const response = await fetch('/cart/get-quantity-items', {
+    credentials: 'include',
+  });
   const { quantityItems } = await response.json();
 
   if (!quantityItems) {

@@ -5,9 +5,11 @@ let cart, goodsObject;
 
 const getOrder = async () => {
   try {
-    const response = await fetch('/cart/get-cart');
+    const response = await fetch('/cart/get-cart', {
+      credentials: 'include',
+    });
     const result = await response.json();
-    console.log('get-cart');
+
     cart = result.cart;
     goodsObject = result.goodsInCart.reduce((accum, item) => {
       accum[item.gid] = item;
@@ -24,7 +26,10 @@ const getOrder = async () => {
 const updateCart = async () => {
   await fetch('/cart/update-cart', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
     body: JSON.stringify(cart),
   });
 };
@@ -52,7 +57,12 @@ const showCart = () => {
   updateCart();
 
   if (Object.keys(cart).length === 0) {
-    mainCart.innerHTML = "<h1>You don't have any items</h1>";
+    mainCart.innerHTML = `
+    <h1>You don't have any items</h1>
+    <div class='col-12 flex-center fixed-photo'>
+      <img class='imh-fluid' src='/images/empty-cart.jpg'/>
+    </div>
+    `;
     itemsInCart.textContent = '';
     itemsInCart.classList.add('d-none');
     return;
@@ -62,6 +72,7 @@ const showCart = () => {
   let total = 0;
   let countItemsInCart = 0;
 
+  table += '<form action="/cart/buy-now" method="POST">';
   table += '<table class="table">';
   table +=
     '<tr><th></th><th>Image</th><th>Title</th><th>Count</th><th>Price</th></tr>';
@@ -103,8 +114,14 @@ const showCart = () => {
   }
   table += `<tr><td colspan="4">Total:</td><td><b>${total} £</b></td></tr>`;
   table += '</table>';
+  table += `<button id="checkoutBtn" class="btn btn-success mt-3 buy-now-btn">Buy now</button>`;
+  table += '</form>';
 
   mainCart.innerHTML = table; // show cart table
+  // mainCart.insertAdjacentHTML(
+  //   'beforeend',
+  //   `<button id="checkoutBtn" class="btn btn-success mt-3 buy-now-btn">Buy now</button>`
+  // );
 
   itemsInCart.textContent = countItemsInCart; // show quantity in cart btn
 };

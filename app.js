@@ -12,6 +12,10 @@ const usersRouter = require('./routes/users');
 const catRouter = require('./routes/categories');
 const cartRouter = require('./routes/cart');
 const changelangRouter = require('./routes/change_lang');
+const loginRouter = require('./routes/login');
+const signUpRouter = require('./routes/sign_up');
+const userCart = require('./routes/user_cart');
+const ordersHistory = require('./routes/orders_history');
 // const testAPIRouter = require('./routes/testAPI');
 
 global.lang = 'en';
@@ -20,19 +24,37 @@ const app = express();
 
 // app.use(cors()); to allow users use API
 
-app.use(cookieParser('asdHO6we76^**o3'));
+// app.use(cookieParser('asdHO6we76^**o3'));
+// app.use(
+//   expressSession({
+//     secret: 'adHF52dgGF9^*o0',
+//   })
+// );
+
+// app.use((req, res, next) => {
+//   if (!req.session.uid) {
+//     req.session.uid = randomString.generate();
+//   }
+
+//   console.log(req.session.uid);
+//   next();
+// });
+
 app.use(
   expressSession({
-    secret: 'adHF52dgGF9^*o0',
+    secret: 'your-secret-key', // 🔐 Используется для подписи cookie (обязательно менять на надёжный)
+    resave: false, // 🔁 Не сохранять сессию, если она не изменялась
+    saveUninitialized: false, // ❌ Не сохранять пустую сессию
+    cookie: {
+      httpOnly: true, // 🛡 Защита от XSS
+      maxAge: 1000 * 60 * 60, // 🕒 Время жизни сессии (1 час)
+    },
   })
 );
 
+// pass session to pug files
 app.use((req, res, next) => {
-  if (!req.session.uid) {
-    req.session.uid = randomString.generate();
-  }
-
-  console.log(req.session.uid);
+  res.locals.user = req.session.user || null;
   next();
 });
 
@@ -51,6 +73,10 @@ app.use('/users', usersRouter);
 app.use('/categories', catRouter);
 app.use('/cart', cartRouter);
 app.use('/change_lang', changelangRouter);
+app.use('/login', loginRouter);
+app.use('/sign-up', signUpRouter);
+app.use('/user-cart', userCart);
+app.use('/orders-history', ordersHistory);
 // app.use('/test', testAPIRouter);
 
 // catch 404 and forward to error handler

@@ -52,6 +52,34 @@ a,
   background: #999;
 }
 
+.main-img {
+  animation: rotate 120s infinite linear;
+
+  max-width: 500px;
+  max-height: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+@keyframes mainPhoto {
+  0%,
+  100% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .number-of-items {
   width: 20px;
   height: 20px;
@@ -104,6 +132,14 @@ footer {
 }
 
 /* cart */
+
+.fixed-photo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  opacity: 0.1;
+}
 
 .cart-item-img {
   width: 100px;
