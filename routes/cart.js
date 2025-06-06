@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
 
 // get number of items for headr
 router.get('/get-quantity-items', auth, async (req, res) => {
-  const userID = req.session.user.id;
+  const userID = req.session.user?.id;
 
   const { rows: orders } = await pool.query(
     `

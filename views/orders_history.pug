@@ -2,3 +2,33 @@ extends layout
 
 block content
   h1 Orders history
+  div.row
+    div.col-12
+      each goods in orders 
+        table.table.mt-5
+          thead.table-secondary
+            tr
+              td(colspan='4').text-center
+                p.text-center
+                  b= goods.created_at
+            tr
+              th.text-center(scope='col') Image
+              th(scope='col') Title
+              th(scope='col') Quantity
+              th(scope='col') Price
+              //- th(scope='col') Created at
+          tbody
+            each item in goods.items
+              tr
+                td.text-center(style='width: 200px')
+                  img(src=`/images/${item.image}`, alt="", style='height: 100px')
+                td #{item.title}
+                td #{item.quantity}
+
+                td #{item.price * item.quantity} £
+            tr
+              td(colspan='3') 
+                b Total price:
+              td
+                b #{goods.totalPrice} £
+
