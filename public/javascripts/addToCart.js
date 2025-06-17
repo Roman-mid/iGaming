@@ -19,15 +19,16 @@ const getQuantityItems = async () => {
   });
   const { quantityItems } = await response.json();
 
-  if (!quantityItems) {
+  if (!quantityItems && itemsInCart !== null) {
     itemsInCart.textContent = '';
     itemsInCart.classList.add('d-none');
     return;
   }
 
-  itemsInCart.classList.remove('d-none');
-
-  itemsInCart.textContent = quantityItems;
+  if (itemsInCart !== null) {
+    itemsInCart.classList.remove('d-none');
+    itemsInCart.textContent = quantityItems;
+  }
 };
 
 getQuantityItems();

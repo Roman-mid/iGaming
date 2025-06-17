@@ -1,7 +1,7 @@
 const addToCartBtn = document.querySelector('.button-add-to-cart');
-const buyBtn = document.querySelector('.buy-now-btn');
+// const buyBtn = document.querySelector('.buy-now-btn');
 
-addToCartBtn.addEventListener('click', function () {
+addToCartBtn?.addEventListener('click', function () {
   try {
     const id = this.dataset.id;
     addToCart(id);

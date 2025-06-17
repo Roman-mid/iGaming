@@ -55,7 +55,7 @@ router.get('/', async (req, res, next) => {
     };
   });
 
-  res.render('orders_history', { orders: ordersHistory });
+  res.render('orders_history', { orders: ordersHistory.reverse() });
 });
 
 module.exports = router;
