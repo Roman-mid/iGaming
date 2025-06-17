@@ -1,4 +1,13 @@
+const { messages, REGEXES } = require('./constants/validations');
+
 const loginForm = document.querySelector('.loginForm');
+const errorMessages = loginForm.querySelectorAll('.errorMessage');
+const inpustForm = loginForm.querySelectorAll('input');
+const [emailErrorMessage, passwordErrorMessage] = errorMessages;
+const [emailInput, passwordInput] = inpustForm;
+
+let isPasswordError = true;
+let isEmailError = true;
 
 const loginUser = async (e) => {
   e.preventDefault();
@@ -7,7 +16,18 @@ const loginUser = async (e) => {
     const formData = new FormData(loginForm);
     const data = Object.fromEntries(formData.entries());
 
-    if (!data.email.trim() || !data.password.trim()) {
+    const email = data.email.trim();
+    const password = data.password.trim();
+
+    if (!email) {
+      emailErrorMessage.textContent = messages.required;
+    }
+
+    if (!password) {
+      passwordErrorMessage.textContent = messages.required;
+    }
+
+    if (!email || !password || isPasswordError || isEmailError) {
       return;
     }
 
@@ -18,48 +38,70 @@ const loginUser = async (e) => {
       body: JSON.stringify(data),
     });
 
+    const responseData = await result.json();
+
     if (!result.ok) {
-      throw new Error(`Server error: ${result.status}`);
+      emailErrorMessage.textContent = responseData.error || messages.wrong;
+
+      passwordErrorMessage.textContent = responseData.error || messages.wrong;
+      return;
     }
   } catch (error) {
-    console.error('Request failed:', error.message);
+    console.error('Request failed:', error);
+
+    passwordErrorMessage.textContent = messages.networkError;
   }
 };
 
-// const loginUser = async (e) => {
-//   e.preventDefault();
+const validateEmail = (e) => {
+  isEmailError = false;
+  emailErrorMessage.textContent = '';
 
-//   try {
-//     const formData = new FormData(loginForm);
-//     const data = Object.fromEntries(formData.entries());
+  e.target.value = e.target.value.replace(/ /g, '');
+  const value = e.target.value;
 
-//     if (!data.email.trim() || !data.password.trim()) {
-//       return;
-//     }
+  if (!REGEXES.EMAIL.test(value)) {
+    emailErrorMessage.textContent = 'Incorrect email';
+    isEmailError = true;
+  }
+};
 
-//     const result = await fetch('/login', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       credentials: 'include',
-//       body: JSON.stringify(data),
-//     });
+const validatePassword = (e) => {
+  isPasswordError = false;
+  passwordErrorMessage.textContent = '';
 
-//     if (!result.ok) {
-//       throw new Error(`Server error: ${result.status}`);
-//     }
+  e.target.value = e.target.value.replace(/ /g, '');
+  const value = e.target.value;
 
-//     const res = await result.json();
+  if (!value) {
+    passwordErrorMessage.textContent = messages.required;
+    isPasswordError = true;
+    return;
+  }
 
-//     if (res.token) {
-//       localStorage.setItem('token', res.token);
-//       window.location.href = '/';
-//     } else {
-//       console.error('Login error:', res.error);
-//       alert(res.error);
-//     }
-//   } catch (error) {
-//     console.error('Request failed:', error.message);
-//   }
-// };
+  if (REGEXES.LANG.test(value)) {
+    passwordErrorMessage.textContent = 'Only Latin characters are allowed.';
+    isPasswordError = true;
 
-// loginForm.addEventListener('submit', loginUser);
+    return;
+  }
+
+  if (value.length < 8) {
+    passwordErrorMessage.textContent = 'Must be minimun 8 symbols';
+    isPasswordError = true;
+
+    return;
+  }
+
+  if (value.length > 16) {
+    passwordErrorMessage.textContent = 'Must be no more then 16 symbols';
+    isPasswordError = true;
+
+    return;
+  }
+};
+
+loginForm.addEventListener('submit', loginUser);
+
+passwordInput.addEventListener('input', validatePassword);
+emailInput.addEventListener('input', validateEmail);

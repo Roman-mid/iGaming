@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../db/config');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-const JWT_SECRET = 'your_jwt_secret_key'; // just for test
+// const JWT_SECRET = 'your_jwt_secret_key'; // just for test
 
 router.get('/', (req, res, next) => {
   res.render('login', {});
@@ -29,25 +29,14 @@ router.post('/', async (req, res, next) => {
     );
 
     if (user.length === 0) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: 'Incorrect email or password' });
     }
 
     const isValidPassword = await bcrypt.compare(password, user[0].password);
 
     if (!isValidPassword) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: 'Incorrect email or password' });
     }
-
-    // const payload = { id: user[0].id, email: user[0].email };
-
-    // const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
-
-    // res.cookie('token', token, {
-    //   httpOnly: true,
-    //   secure: process.env.NODE_ENV === 'production',
-    //   sameSite: 'Strict',
-    //   maxAge: 60 * 60 * 1000, // 1 час
-    // });
 
     req.session.user = {
       id: user[0].id,
@@ -58,8 +47,6 @@ router.post('/', async (req, res, next) => {
       id: user[0].id,
       email: user[0].email,
     });
-
-    // return res.status(200).json({ token });
 
     res.redirect('/');
   } catch (err) {
@@ -77,11 +64,5 @@ router.get('/logout', (req, res) => {
     res.redirect('/login');
   });
 });
-
-// for coocies
-// router.post('/logout', (req, res) => {
-//   res.clearCookie('token');
-//   res.status(200).json({ message: 'Logged out' });
-// });
 
 module.exports = router;

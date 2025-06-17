@@ -168,6 +168,10 @@ footer {
   transform: scale(1.1);
 }
 
+/* .errorMessage {
+  color: tomato;
+} */
+
 @media (max-width: 992px) {
   .galery-img {
     height: 100%;
