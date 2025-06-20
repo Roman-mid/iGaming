@@ -48,7 +48,9 @@ router.post('/', async (req, res, next) => {
       email: user[0].email,
     });
 
-    res.redirect('/');
+    res.status(200).json({
+      message: 'Login successful',
+    });
   } catch (err) {
     console.error('Login error:', err);
     res.status(500).json({ message: 'Internal server error' });

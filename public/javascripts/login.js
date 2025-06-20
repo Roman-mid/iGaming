@@ -1,4 +1,15 @@
-const { messages, REGEXES } = require('./constants/validations');
+// const { messages, REGEXES } = require('./constants/validations');
+
+const messages = {
+  required: 'Required field',
+  wrong: 'Something went wrong.',
+  networkError: 'Network error. Please try again.',
+};
+
+const REGEXES = {
+  LANG: /[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
+  EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+};
 
 const loginForm = document.querySelector('.loginForm');
 const errorMessages = loginForm.querySelectorAll('.errorMessage');
@@ -46,6 +57,8 @@ const loginUser = async (e) => {
       passwordErrorMessage.textContent = responseData.error || messages.wrong;
       return;
     }
+
+    window.location.href = '/';
   } catch (error) {
     console.error('Request failed:', error);
 

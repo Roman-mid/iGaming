@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const expressSession = require('express-session');
-const randomString = require('randomstring');
+// const randomString = require('randomstring');
 // const cors = require('cors');
 
 const indexRouter = require('./routes/index');
