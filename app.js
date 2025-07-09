@@ -21,6 +21,8 @@ const app = express();
 
 app.use(
   expressSession({
+    secret: 'your-secret-key',
+    saveUninitialized: false,
     resave: false,
     saveUninitialized: false,
     cookie: {
