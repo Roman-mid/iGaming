@@ -170,7 +170,6 @@ router.post('/buy-now', auth, async (req, res, next) => {
       [userID]
     );
 
-    // res.json({ result: true });
     res.redirect('/categories');
   } catch (err) {
     res.status(500).json({ result: false, message: 'Server error' });

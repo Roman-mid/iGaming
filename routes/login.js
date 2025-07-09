@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../db/config');
-// const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-
-// const JWT_SECRET = 'your_jwt_secret_key'; // just for test
+const { messages } = require('./constants/validations');
 
 router.get('/', (req, res, next) => {
   res.render('login', {});
@@ -16,14 +14,12 @@ router.post('/', async (req, res, next) => {
     const password = req.body.password.trim();
 
     if (!email || !password) {
-      return res
-        .status(400)
-        .json({ message: 'Email and password are required' });
+      return res.status(400).json({ message: messages.required });
     }
 
     const { rows: user } = await pool.query(
       `
-    SELECT * FROM users WHERE email = $1 
+      SELECT * FROM users WHERE email = $1 
     `,
       [email]
     );

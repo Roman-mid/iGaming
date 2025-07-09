@@ -2,17 +2,21 @@ extends layout
 
 block content
   h1 Create a new account
-  form.signUpForm(method="POST", action="/sign-up")
+  form.signUpForm
     .form-group
       label(for='exampleInputEmail1') Email address
-      input#exampleInputEmail1.form-control.mt-1(name='email' type='email' aria-describedby='emailHelp' placeholder='Enter email')
+      input#exampleInputEmail1.form-control.mt-1(name='email' type='email' aria-describedby='emailHelp' placeholder='Enter email' autocomplete="username")
+      span.d-block.mt-1.text-danger.errorMessage
 
     .form-group.mt-3
       label(for='exampleInputPassword1') Password
-      input#exampleInputPassword1.form-control.mt-1(name='password' type='password' placeholder='Password')
+      input#exampleInputPassword1.form-control.mt-1(name='password' type='password' placeholder='Password' autocomplete="new-password")
+      span.d-block.mt-1.text-danger.errorMessage
+
     button.btn.btn-success.mt-3.signupBtn(type='submit') Sign Up
+    span.d-block.my-3.text-danger.userExist
 
-  a.mt-3.d-block.text-success(href="/login") Back to Login
+  a.mt-3.text-success(href="/login") Back to Login
 
-  script(src="/javascripts/sign_up.js") 
+  script(type="module" src="/javascripts/sign_up.js") 
   block scripts

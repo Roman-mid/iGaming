@@ -1,15 +1,5 @@
-// const { messages, REGEXES } = require('./constants/validations');
-
-const messages = {
-  required: 'Required field',
-  wrong: 'Something went wrong.',
-  networkError: 'Network error. Please try again.',
-};
-
-const REGEXES = {
-  LANG: /[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
-  EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-};
+import { validateEmail, validatePassword } from './tools/validations.js';
+import { messages } from './constants/validations.js';
 
 const loginForm = document.querySelector('.loginForm');
 const errorMessages = loginForm.querySelectorAll('.errorMessage');
@@ -17,12 +7,14 @@ const inpustForm = loginForm.querySelectorAll('input');
 const [emailErrorMessage, passwordErrorMessage] = errorMessages;
 const [emailInput, passwordInput] = inpustForm;
 
-let isPasswordError = true;
-let isEmailError = true;
+const formValidFields = {
+  isPasswordError: true,
+  isEmailError: true,
+};
 
-const loginUser = async (e) => {
+const loginUser = async (e, formValidFields) => {
   e.preventDefault();
-
+  console.log(formValidFields);
   try {
     const formData = new FormData(loginForm);
     const data = Object.fromEntries(formData.entries());
@@ -38,7 +30,12 @@ const loginUser = async (e) => {
       passwordErrorMessage.textContent = messages.required;
     }
 
-    if (!email || !password || isPasswordError || isEmailError) {
+    if (
+      !email ||
+      !password ||
+      formValidFields.isPasswordError === true ||
+      formValidFields.isEmailError === true
+    ) {
       return;
     }
 
@@ -53,7 +50,6 @@ const loginUser = async (e) => {
 
     if (!result.ok) {
       emailErrorMessage.textContent = responseData.error || messages.wrong;
-
       passwordErrorMessage.textContent = responseData.error || messages.wrong;
       return;
     }
@@ -66,55 +62,12 @@ const loginUser = async (e) => {
   }
 };
 
-const validateEmail = (e) => {
-  isEmailError = false;
-  emailErrorMessage.textContent = '';
+loginForm.addEventListener('submit', (e) => loginUser(e, formValidFields));
 
-  e.target.value = e.target.value.replace(/ /g, '');
-  const value = e.target.value;
+passwordInput.addEventListener('input', (e) =>
+  validatePassword(e, formValidFields, passwordErrorMessage)
+);
 
-  if (!REGEXES.EMAIL.test(value)) {
-    emailErrorMessage.textContent = 'Incorrect email';
-    isEmailError = true;
-  }
-};
-
-const validatePassword = (e) => {
-  isPasswordError = false;
-  passwordErrorMessage.textContent = '';
-
-  e.target.value = e.target.value.replace(/ /g, '');
-  const value = e.target.value;
-
-  if (!value) {
-    passwordErrorMessage.textContent = messages.required;
-    isPasswordError = true;
-    return;
-  }
-
-  if (REGEXES.LANG.test(value)) {
-    passwordErrorMessage.textContent = 'Only Latin characters are allowed.';
-    isPasswordError = true;
-
-    return;
-  }
-
-  if (value.length < 8) {
-    passwordErrorMessage.textContent = 'Must be minimun 8 symbols';
-    isPasswordError = true;
-
-    return;
-  }
-
-  if (value.length > 16) {
-    passwordErrorMessage.textContent = 'Must be no more then 16 symbols';
-    isPasswordError = true;
-
-    return;
-  }
-};
-
-loginForm.addEventListener('submit', loginUser);
-
-passwordInput.addEventListener('input', validatePassword);
-emailInput.addEventListener('input', validateEmail);
+emailInput.addEventListener('input', (e) =>
+  validateEmail(e, formValidFields, emailErrorMessage)
+);

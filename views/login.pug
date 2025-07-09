@@ -3,21 +3,20 @@ extends layout
 
 block content
   h1 Login to your account
-  //- form.loginForm(method="POST", action="/login")
   form.loginForm
     .form-group
       label(for='exampleInputEmail1') Email address
-      input#exampleInputEmail1.form-control.mt-1(name='email' type='email'  aria-describedby='emailHelp' placeholder='Enter email')
+      input#exampleInputEmail1.form-control.mt-1(name='email' type='email'  aria-describedby='emailHelp' placeholder='Enter email' autocomplete="username" )
       span.d-block.mt-1.text-danger.errorMessage
 
     .form-group.mt-3
       label(for='exampleInputPassword1') Password
-      input#exampleInputPassword1.form-control.mt-1(name='password'  type='text' placeholder='Password')
+      input#exampleInputPassword1.form-control.mt-1(name='password'  type='password' placeholder='Password' autocomplete="current-password")
       span.d-block.mt-1.text-danger.errorMessage
 
     button.btn.btn-success.mt-3.loginBtn(type='submit') Login
   span.mt-3.d-block Don't have an account 
     a.text-success(href="/sign-up")  Sign up 
 
-  script(src="/javascripts/login.js") 
+  script(type="module" src="/javascripts/login.js") 
   block scripts

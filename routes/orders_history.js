@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../db/config');
 
-// const auth = require('./middlewares/auth');
-
 router.get('/', async (req, res, next) => {
   const userID = req.session.user?.id;
 
@@ -63,7 +61,7 @@ module.exports = router;
 const transformDate = (date) => {
   const formattedDate = date.toLocaleDateString('en-GB', {
     day: '2-digit',
-    month: 'long', // 'short' — если хочешь сокращённое название месяца
+    month: 'long',
     year: 'numeric',
   });
 
