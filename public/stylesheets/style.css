@@ -186,5 +186,21 @@ footer {
   .menu-wrap a {
     padding: 20px 0;
     font-size: 20px;
+    display: inline-block;
+    width: auto;
+  }
+
+  .account {
+    width: 100px;
+  }
+
+  .account a {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .loginForm,
+  .signUpForm {
+    width: 70%;
   }
 }

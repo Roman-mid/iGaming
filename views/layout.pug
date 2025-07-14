@@ -34,7 +34,7 @@ html
             li.nav-item.dropdown
               a.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
                 | Account
-              ul.dropdown-menu.lang
+              ul.dropdown-menu.lang.account
                 li
                   a.dropdown-item(href= user ? '/login/logout' : '/login') #{user ? 'Logout' : 'Login'}
                 if user
