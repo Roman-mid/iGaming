@@ -13,10 +13,9 @@ block content
                   b= goods.created_at
             tr
               th.text-center(scope='col') Image
-              th(scope='col') Title
+              th.product-title-col(scope='col') Title
               th(scope='col') Quantity
               th(scope='col') Price
-              //- th(scope='col') Created at
           tbody
             each item in goods.items
               tr
