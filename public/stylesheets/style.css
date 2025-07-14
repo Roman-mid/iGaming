@@ -100,6 +100,10 @@ a,
   align-items: center;
 }
 
+/* .category-name {
+  font-size: 16px;
+} */
+
 .galary-wrap {
   display: flex;
   justify-content: space-between;
@@ -168,10 +172,6 @@ footer {
   transform: scale(1.1);
 }
 
-/* .errorMessage {
-  color: tomato;
-} */
-
 @media (max-width: 992px) {
   .galery-img {
     height: 100%;
@@ -181,5 +181,10 @@ footer {
 
   .galary-h {
     height: 150px;
+  }
+
+  .menu-wrap a {
+    padding: 20px 0;
+    font-size: 20px;
   }
 }
