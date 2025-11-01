@@ -21,6 +21,7 @@ P.S. I used the free deployment version, so it will take some time to render the
 The project was created by Express.js without any frontend frameworks. The design is minimalistic using Bootstrap. The priority is architecture and understanding of technologies, not UI.
 
 ### Core Features
+
 Registration & authorization
 Display categories
 Display all products within one category
@@ -31,6 +32,7 @@ Order history
 Bilingual content (English / Spanish)
 
 ### Tech Stack
+
 Express.js — Backend framework for Node.js
 Supabase (PostgreSQL) — Database for products and users
 Bootstrap — Minimalist, responsive UI
